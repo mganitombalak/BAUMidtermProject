@@ -1,0 +1,1 @@
+﻿typedef signed __int16 FourDigitDatePart;
