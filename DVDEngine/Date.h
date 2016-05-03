@@ -7,10 +7,12 @@ class Date
 {
 public:
 	Date();
-	Date(const string* const);
+	explicit Date(const string&);
 	Date(const TwoDigitDatePart* const, const TwoDigitDatePart* const, const FourDigitDatePart* const);
-	static bool IsValidDate();
-
+	bool IsValidDate() const;
+	TwoDigitDatePart getDay(void) const;
+	TwoDigitDatePart getMonth(void) const;
+	FourDigitDatePart getYear(void) const;
 	~Date();
 
 private:

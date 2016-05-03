@@ -12,12 +12,12 @@ public:
 	~Movie();
 
 private:
-	string _DVD_Title;
-	MovieStatus _Status;
-	double _Price;
-	FourDigitDatePart _Year;
-	string _Genre;
-	Date _DVD_ReleaseDate;
+	string DVD_Title;
+	MovieStatus Status;
+	double Price;
+	FourDigitDatePart Year;
+	string Genre;
+	Date DVD_ReleaseDate;
 
 };
 
