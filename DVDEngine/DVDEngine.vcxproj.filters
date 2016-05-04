@@ -39,6 +39,9 @@
     <ClInclude Include="FileDataAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BaseDataModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Movie.cpp">
@@ -56,7 +59,7 @@
     <ClCompile Include="FileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FileDataAdapter.cpp">
+    <ClCompile Include="BaseDataModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

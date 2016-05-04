@@ -3,12 +3,15 @@
 #include "MovieStatus.h"
 #include "FourDigitDatePart.h"
 #include "Date.h"
+#include "BaseDataModel.h"
 using namespace std;
-class Movie
+class Movie:public BaseDataModel
 {
+	string dataString;
 public:
 	Movie();
 	Movie(string,MovieStatus,double,FourDigitDatePart,string, Date);
+	explicit Movie(const string&);
 	~Movie();
 
 private:

@@ -2,14 +2,15 @@
 
 
 
-Movie::Movie()
+Movie::Movie(string, MovieStatus, double, FourDigitDatePart, string, Date):BaseDataModel(nullptr)
 {
+
 }
 
-Movie::Movie(string, MovieStatus, double, FourDigitDatePart, string, Date)
+Movie::Movie(const string& rawData):BaseDataModel(rawData)
 {
-}
 
+}
 
 Movie::~Movie()
 {

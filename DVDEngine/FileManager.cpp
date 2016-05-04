@@ -10,6 +10,10 @@ std::fstream* FileManager::getFileStream() const
 {
 	return fileStream;
 }
+bool FileManager::IsOpen() const
+{
+	return fileStream != nullptr?fileStream->is_open():false;
+}
 
 FileManager::~FileManager()
 {
