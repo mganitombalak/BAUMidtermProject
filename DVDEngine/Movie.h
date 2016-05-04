@@ -11,7 +11,7 @@ public:
 	Movie();
 	Movie(string,MovieStatus,double,FourDigitDatePart,string, Date);
 	explicit Movie(const string&);
-	void Parse();
+	void Parse() override;
 	~Movie();
 
 private:

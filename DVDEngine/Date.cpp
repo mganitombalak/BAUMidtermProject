@@ -1,4 +1,5 @@
 #include "Date.h"
+#include "Utility.h"
 
 Date::Date():_Day(1),_Month(1),_Year(1900)
 {
@@ -6,26 +7,46 @@ Date::Date():_Day(1),_Month(1),_Year(1900)
 
 Date::Date(const string&  newDate)
 {
-	if(newDate.find(".")!= string::npos || newDate.find("/") != string::npos)
+	if(newDate.find(".")!= string::npos)
 	{
-		string temp;
-		for(int i =0;i<newDate.length();i++)
+		vector<string> dateParts;
+		Utility::Split(newDate, '.',dateParts);
+		if (dateParts.size() > 0)
 		{
-			if(isdigit(newDate[i]))
-			{
-				temp.append(&newDate[i]);
-			}
-			else if (i < 3) {
-				_Day = stoi(temp);
-				temp = "";
-			}
-			else if (i > 3 & i < 5){
-				_Month = stoi(temp);
-				temp = "";
-			}
-			else
-				_Year = stoi(newDate.substr(6, 4));
+			_Day = stoi(dateParts[1]);
+			_Month = stoi(dateParts[0]);
+			_Year = stoi(dateParts[2]);
 
+			if (!this->IsValidDate())
+				throw exception("Invalid date");
+		}
+	}
+	else if(newDate.find("/") != string::npos)
+	{
+		vector<string> dateParts;
+		Utility::Split(newDate, '/', dateParts);
+		if (dateParts.size() > 0)
+		{
+			_Day = stoi(dateParts[1]);
+			_Month = stoi(dateParts[0]);
+			_Year = stoi(dateParts[2]);
+
+			if (!this->IsValidDate())
+				throw exception("Invalid date");
+		}
+	}
+	else if (newDate.find("-") != string::npos)
+	{
+		vector<string> dateParts;
+		Utility::Split(newDate, '-', dateParts);
+		if (dateParts.size() > 0)
+		{
+			_Day = stoi(dateParts[1]);
+			_Month = stoi(dateParts[0]);
+			_Year = stoi(dateParts[2]);
+
+			if (!this->IsValidDate())
+				throw exception("Invalid date");
 		}
 	}
 }

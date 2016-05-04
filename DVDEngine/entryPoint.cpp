@@ -5,13 +5,11 @@
 #include "FileDataAdapter.h"
 #include "Movie.h"
 
-int main(const string args[])
+int main(int argc, char* args[])
 {
-	Movie m("Painted Veil (1934/ Archive Collection/ On Demand DVD-R)	Out	$21.99	1934	Drama	6/11/2013	262949");
-	m.Parse();
-	if (args->length() <= 0) return -1;
-	const auto filePath=&args[0];
-	const auto fm =new FileManager(filePath,ios::out);
+	const string* filePath=new string("D:\\DVD_List.txt");
+	const FileManager* fm =new FileManager(filePath,ios::in);
 	auto f = new FileDataAdapter<Movie>(fm);
+	f->Execute();
 	return 0;
 }
