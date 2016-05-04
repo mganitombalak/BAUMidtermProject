@@ -8,9 +8,25 @@ Date::Date(const string&  newDate)
 {
 	if(newDate.find(".")!= string::npos || newDate.find("/") != string::npos)
 	{
-		_Day = stoi(newDate.substr(0, 2));
-		_Month= stoi(newDate.substr(3, 2));
-		_Year = stoi(newDate.substr(6,4));
+		string temp;
+		for(int i =0;i<newDate.length();i++)
+		{
+			if(isdigit(newDate[i]))
+			{
+				temp.append(&newDate[i]);
+			}
+			else if (i < 3) {
+				_Day = stoi(temp);
+				temp = "";
+			}
+			else if (i > 3 & i < 5){
+				_Month = stoi(temp);
+				temp = "";
+			}
+			else
+				_Year = stoi(newDate.substr(6, 4));
+
+		}
 	}
 }
 

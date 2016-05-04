@@ -15,7 +15,12 @@ void Utility::Split(const std::string& splittingText, char delimeter, std::vecto
 	}
 }
 
-Utility::Utility(){}
+Utility::Utility()
+{
+	MovieStatusParser["Out"] = MovieStatus::Out;
+	MovieStatusParser["Cancelled"] = MovieStatus::Cancelled;
+	MovieStatusParser["Discontinued"] = MovieStatus::Discontinued;
+}
 
 
 Utility::~Utility() {}

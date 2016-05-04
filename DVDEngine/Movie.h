@@ -7,20 +7,22 @@
 using namespace std;
 class Movie:public BaseDataModel
 {
-	string dataString;
 public:
 	Movie();
 	Movie(string,MovieStatus,double,FourDigitDatePart,string, Date);
 	explicit Movie(const string&);
+	void Parse();
 	~Movie();
 
 private:
+	char PriceUnitSymbol;
 	string DVD_Title;
 	MovieStatus Status;
 	double Price;
 	FourDigitDatePart Year;
 	string Genre;
 	Date DVD_ReleaseDate;
+	int ID;
 
 };
 
