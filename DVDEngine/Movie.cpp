@@ -10,7 +10,6 @@ Movie::Movie(string, MovieStatus, double, FourDigitDatePart, string, Date) :Base
 
 Movie::Movie(const string& rawData) : BaseDataModel(rawData)
 {
-
 }
 
 void Movie::Parse()
