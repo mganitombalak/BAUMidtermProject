@@ -48,7 +48,7 @@
     <ClInclude Include="MenuItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DataCollector.h">
+    <ClInclude Include="Global.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -77,7 +77,7 @@
     <ClCompile Include="MenuItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DataCollector.cpp">
+    <ClCompile Include="Operations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -11,21 +11,18 @@ public:
 	Movie(string,MovieStatus,double,FourDigitDatePart,string, Date);
 	explicit Movie(const string&);
 	void Parse() override;
-	string getTitle() const;
-	int getID() const;
 	void Print() const;
 	~Movie();
-	char getPriceUnitSymbol();
-	string getDVD_Title();
-	MovieStatus getStatus();
-	double getPrice();
-	FourDigitDatePart getYear();
-	string getGenre();
-	Date getDVD_ReleaseDate();
-	int getID();
+	char getPriceUnitSymbol() const;
+	string getDVD_Title() const;
+	MovieStatus getStatus() const;
+	double getPrice() const;
+	FourDigitDatePart getYear()const;
+	string getGenre() const;
+	Date getDVD_ReleaseDate() const;
+	int getID() const;
 
 private:
-	char PriceUnitSymbol;
 	string DVD_Title;
 	MovieStatus Status;
 	double Price;
@@ -33,6 +30,6 @@ private:
 	string Genre;
 	Date DVD_ReleaseDate;
 	int ID;
-
+	char PriceUnitSymbol;
 };
 

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-MenuItem::MenuItem() :Title(nullptr), DisplayOrder(0), ParentMenu(nullptr)
+MenuItem::MenuItem() :Title(nullptr), DisplayOrder(0), ParentMenu(nullptr),onSelected(nullptr)
 {
 }
 
@@ -30,15 +30,26 @@ int MenuItem::getDisplayOrder() const
 	return DisplayOrder;
 }
 
-MenuItem::MenuItem(string* menuTitle, MenuItem* parentMenu, int displayOrder)
+MenuItem::MenuItem(string* menuTitle, MenuItem* parentMenu, int displayOrder, void(*handler)())
 {
 	Title = menuTitle;
 	DisplayOrder = displayOrder;
 	ParentMenu = parentMenu;
+	onSelected = handler;
 }
 
 MenuItem::~MenuItem()
 {
 	delete ParentMenu;
 	delete Title;
+}
+
+bool MenuItem::hasFunction()
+{
+	return this->onSelected != nullptr;
+}
+
+void(* MenuItem::getFunction())()
+{
+	return this->onSelected;
 }

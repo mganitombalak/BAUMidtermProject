@@ -5,16 +5,18 @@
 #include "FileDataAdapter.h"
 #include "Movie.h"
 #include "ApplicationManager.h"
+#include "Global.h"
+
 
 int main(int argc, char* args[])
 {
-	ApplicationManager ap;
-	ap.PrepareMenuTree();
+	appMgr = new ApplicationManager;
+	appMgr->PrepareMenuTree();
 	const string* filePath = new string("D:\\DVD_List.txt");
 	const FileManager* fm = new FileManager(filePath, ios::in);
-	auto f = new FileDataAdapter<Movie>(fm);
-	f->Execute(true);
-	ap.ShowAndAskForMainMenu();
+	fda = new FileDataAdapter<Movie>(fm);
+	fda->Execute(true);
+	appMgr->ShowAndAskForMainMenu();
 	string s;
 	cin >> s;
 	return 0;

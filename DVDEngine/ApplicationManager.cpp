@@ -3,56 +3,61 @@
 #include "ApplicationManager.h"
 #include "Utility.h"
 #include <windows.h>
+#include "Movie.h"
+#include "Global.h"
 
 using namespace std;
 
 void ApplicationManager::PrepareMenuTree() const
 {
+	void(*handler)();
 
 #pragma region First Group
 
-	menuList[0] = *(new MenuItem(new string("Search and display a movie"), nullptr, 0));
-	menuList[1] = *(new MenuItem(new string("By DVD Title"), &menuList[0], 0));
-	menuList[2] = *(new MenuItem(new string("By ID"), &menuList[0], 1));
+	menuList[0] = *(new MenuItem(new string("Search and display a movie"), nullptr, 0,  nullptr));
+	handler = &filterByTitle;
+	menuList[1] = *(new MenuItem(new string("By DVD Title"), &menuList[0], 0,  handler));
+	handler = &filterByID;
+	menuList[2] = *(new MenuItem(new string("By ID"), &menuList[0], 1,  handler));
 
 #pragma endregion 
 
 #pragma region Second Group
 
-	menuList[3] = *(new MenuItem(new string("Compare two movies based on their price information"), nullptr, 1));
+	menuList[3] = *(new MenuItem(new string("Compare two movies based on their price information"), nullptr, 1,  nullptr));
 #pragma endregion 
 
 #pragma region Third Group
 
-	menuList[4] = *(new MenuItem(new string("List movies based on genre"), nullptr, 2));
-	menuList[5] = *(new MenuItem(new string("Suspense"), &menuList[4], 0));
-	menuList[6] = *(new MenuItem(new string("Foreign"), &menuList[4], 1));
-	menuList[7] = *(new MenuItem(new string("Comedy"), &menuList[4], 2));
-	menuList[8] = *(new MenuItem(new string("Western"), &menuList[4], 3));
-	menuList[9] = *(new MenuItem(new string("Music"), &menuList[4], 4));
-	menuList[10] = *(new MenuItem(new string("Drama"), &menuList[4], 5));
+	menuList[4] = *(new MenuItem(new string("List movies based on genre"), nullptr, 2,  nullptr));
+	menuList[5] = *(new MenuItem(new string("Suspense"), &menuList[4], 0, nullptr));
+	menuList[6] = *(new MenuItem(new string("Foreign"), &menuList[4], 1,  nullptr));
+	menuList[7] = *(new MenuItem(new string("Comedy"), &menuList[4], 2,  nullptr));
+	menuList[8] = *(new MenuItem(new string("Western"), &menuList[4], 3,  nullptr));
+	menuList[9] = *(new MenuItem(new string("Music"), &menuList[4], 4, nullptr));
+	menuList[10] = *(new MenuItem(new string("Drama"), &menuList[4], 5, nullptr));
 
 #pragma endregion 
 
 #pragma region Fourth Group
 
-	menuList[11] = *(new MenuItem(new string("Display Statistics"), nullptr, 3));
-	menuList[12] = *(new MenuItem(new string("Display number of each genres"), &menuList[11], 0));
-	menuList[13] = *(new MenuItem(new string("Display average price"), &menuList[11], 1));
-	menuList[14] = *(new MenuItem(new string("Display number of movies whose price is greater than"), &menuList[11], 2));
-	menuList[15] = *(new MenuItem(new string("Display average price of \"Discontinued\" movies"), &menuList[11], 3));
-	menuList[16] = *(new MenuItem(new string("Display average price of \"Out\" movies"), &menuList[11], 4));
-	menuList[17] = *(new MenuItem(new string("Display average price of \"Cancelled\" movies"), &menuList[11], 5));
-	menuList[18] = *(new MenuItem(new string("Drama"), &menuList[11], 6));
+	menuList[11] = *(new MenuItem(new string("Display Statistics"), nullptr, 3, nullptr));
+	menuList[12] = *(new MenuItem(new string("Display number of each genres"), &menuList[11], 0,  nullptr));
+	menuList[13] = *(new MenuItem(new string("Display average price"), &menuList[11], 1,  nullptr));
+	menuList[14] = *(new MenuItem(new string("Display number of movies whose price is greater than"), &menuList[11], 2, nullptr));
+	menuList[15] = *(new MenuItem(new string("Display average price of \"Discontinued\" movies"), &menuList[11], 3,  nullptr));
+	menuList[16] = *(new MenuItem(new string("Display average price of \"Out\" movies"), &menuList[11], 4,  nullptr));
+	menuList[17] = *(new MenuItem(new string("Display average price of \"Cancelled\" movies"), &menuList[11], 5,  nullptr));
+	menuList[18] = *(new MenuItem(new string("Drama"), &menuList[11], 6, nullptr));
 
 #pragma endregion 
 
 #pragma region Fifth Group
-	menuList[19] = *(new MenuItem(new string("Display movies after an input date"), nullptr, 4));
+	menuList[19] = *(new MenuItem(new string("Display movies after an input date"), nullptr, 4, nullptr));
 #pragma endregion 
 
 #pragma region Sixth Group
-	menuList[20] = *(new MenuItem(new string("Exit"), nullptr, 5));
+	menuList[20] = *(new MenuItem(new string("Exit"), nullptr, 5, nullptr));
 #pragma endregion 
 
 }
@@ -69,14 +74,14 @@ void ApplicationManager::ShowAndAskForMainMenu() const
 		cout << string(1, 186) << ends;
 		menuList[i].Print(true);
 	}
-	cout << string(1, 200)<< string(60, 205) << string(1, 188)<<endl;
+	cout << string(1, 200) << string(60, 205) << string(1, 188) << endl;
 	int intSelection;
 	MenuItem* choosen = static_cast<MenuItem*>(nullptr);
 	while (!choosen)
 	{
 		try
 		{
-			cout << "Please enter your choice(type 'exit' to exit):"<<ends;
+			cout << "Please enter your choice(type 'exit' to exit):" << ends;
 			string selection;
 			cin >> selection;
 			if (selection == "Exit" || selection == "exit")
@@ -90,7 +95,10 @@ void ApplicationManager::ShowAndAskForMainMenu() const
 		}
 	}
 	cout << string(1, 200) << string(60, 205) << string(1, 188) << endl;
-	ShowSubMenu(choosen);
+	if (choosen->hasFunction())
+		choosen->getFunction()();
+	else
+		ShowSubMenu(choosen);
 }
 
 void ApplicationManager::ShowSubMenu(MenuItem* ParentMenu) const
@@ -121,14 +129,18 @@ void ApplicationManager::ShowSubMenu(MenuItem* ParentMenu) const
 			if (selection[0] == '#')
 				ShowAndAskForMainMenu();
 			intSelection = stoi(selection);
-			choosen = FindMenu(ParentMenu, intSelection);
+			choosen = FindMenu(ParentMenu, intSelection-1);
 		}
 		catch (...)
 		{
 			choosen = nullptr;
 		}
 	}
+	if (choosen->hasFunction())
+		choosen->getFunction()();
 }
+
+
 
 MenuItem* ApplicationManager::FindMenu(MenuItem* ParentMenu, int DisplayOrder) const
 {
@@ -150,4 +162,3 @@ ApplicationManager::~ApplicationManager()
 {
 	delete[] menuList;
 }
-

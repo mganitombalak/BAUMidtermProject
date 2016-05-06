@@ -99,7 +99,7 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Full</Optimization>
+      <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -144,11 +144,11 @@
   <ItemGroup>
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="BaseDataModel.h" />
-    <ClInclude Include="DataCollector.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="FileDataAdapter.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="FourDigitDatePart.h" />
+    <ClInclude Include="Global.h" />
     <ClInclude Include="MenuItem.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieStatus.h" />
@@ -158,12 +158,12 @@
   <ItemGroup>
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="BaseDataModel.cpp" />
-    <ClCompile Include="DataCollector.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="entryPoint.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="MenuItem.cpp" />
     <ClCompile Include="Movie.cpp" />
+    <ClCompile Include="Operations.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
