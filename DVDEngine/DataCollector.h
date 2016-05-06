@@ -4,6 +4,6 @@ class DataCollector
 public:
 	DataCollector();
 	~DataCollector();
-	auto getByID(int fID);
+	void getByID(int fID);
 };
 
