@@ -57,12 +57,11 @@ void ApplicationManager::PrepareMenuTree() const
 
 }
 
-
 void ApplicationManager::ShowAndAskForMainMenu() const
 {
 	system("cls");
 	cout << string(1, 201) << string(60, 205) << string(1, 187) << endl;
-	cout << string(28, 176) << " MENU " << string(28, 176) << endl;
+	cout << string(2, 32) << string(26, 176) << " MENU " << string(26, 176) << string(1, 32) << endl;
 	cout << string(1, 204) << string(60, 205) << string(1, 185) << endl;
 	for (auto i = 0; i < 20; i++)
 	{
@@ -98,7 +97,7 @@ void ApplicationManager::ShowSubMenu(MenuItem* ParentMenu) const
 {
 	system("cls");
 	cout << string(1, 201) << string(60, 205) << string(1, 187) << endl;
-	cout << string(26, 176) << " SUB MENU " << string(26, 176) << endl;
+	cout << string(2, 32) << string(24, 176) << " SUB MENU " << string(24, 176) << string(1, 32) << endl;
 	cout << string(1, 204) << string(60, 205) << string(1, 185) << endl;
 	for (auto i = 0; i < 20; i++)
 	{
