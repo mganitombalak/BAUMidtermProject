@@ -1,7 +1,8 @@
+#include <iostream>
 #include <vector>
 #include "ApplicationManager.h"
 #include "Utility.h"
-#include <iostream>
+
 using namespace std;
 
 void ApplicationManager::PrepareMenuTree() const
@@ -114,6 +115,7 @@ void ApplicationManager::ShowSubMenu(MenuItem* ParentMenu) const
 		}
 	}
 }
+
 MenuItem* ApplicationManager::FindMenu(MenuItem* ParentMenu, int DisplayOrder) const
 {
 	for (auto i = 0; i < 20; i++)

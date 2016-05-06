@@ -9,6 +9,7 @@ template<typename  DataItemType=BaseDataModel>
 class FileDataAdapter
 {
 short progressOfReading=0;
+short previosProgressOfReading=0;
 const FileManager* fileManager;
 vector<DataItemType> list;
 public:
@@ -34,6 +35,9 @@ void FileDataAdapter<DataItemType>::Execute(bool showProgress=false)
 	if(this->fileManager->IsOpen())
 	{
 		string nextLine;
+		system("cls");
+		cout << "Loading data please wait..." << endl;
+		cout << "% 0 record processed." << endl;
 		while (getline(*(fileManager->getFileStream()), nextLine))
 		{
 			++progressOfReading;
@@ -41,11 +45,15 @@ void FileDataAdapter<DataItemType>::Execute(bool showProgress=false)
 			{
 				if (showProgress)
 				{
-					system("cls");
-					cout << "Loading data please wait..." << endl;
-					cout << progressOfReading << " record processed." << endl;
-					cout << string(progressOfReading/250, 254) << endl;
-					_sleep(20);
+					if (previosProgressOfReading < (progressOfReading / 51))
+					{
+						system("cls");
+						cout << "Loading data please wait..." << endl;
+						cout << "% " << (progressOfReading / 52) << " record processed." << endl;
+						cout << string(progressOfReading / 70, 254) << endl;
+						_sleep(20);
+						previosProgressOfReading = progressOfReading / 51;
+					}
 				}
 
 			DataItemType* f =new DataItemType(nextLine);
@@ -58,6 +66,11 @@ void FileDataAdapter<DataItemType>::Execute(bool showProgress=false)
 			}
 		}
 		fileManager->Close();
+		system("cls");
+		cout << "Loading data please wait..." << endl;
+		cout << string(progressOfReading / 70, 254) << endl;
+		cout << "% 100 record processed." << endl;
+		_sleep(2000);
 	}
 }
 
