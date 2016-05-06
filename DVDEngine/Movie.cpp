@@ -38,3 +38,11 @@ void Movie::Parse()
 Movie::~Movie()
 {
 }
+char Movie::getPriceUnitSymbol() { return this->PriceUnitSymbol; };
+string Movie::getDVD_Title() { return this->DVD_Title; };
+MovieStatus Movie::getStatus() { return this->Status; };
+double Movie::getPrice() { return this->Price; };
+FourDigitDatePart Movie::getYear() { return this->Year; };
+string Movie::getGenre() { return this->Genre; };
+Date Movie::getDVD_ReleaseDate() { return this->DVD_ReleaseDate; };
+int Movie::getID() { return this->ID; };

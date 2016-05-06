@@ -81,4 +81,18 @@ FileDataAdapter<DataItemType>::~FileDataAdapter()
 	delete fileManager;
 }
 
+template <typename DataItemType = BaseDataModel>
+Movie FileDataAdapter<DataItemType>::getMovie(int m) {
+
+	Movie a = list[m];
+	return a;
+
+};
+
+template <typename DataItemType = BaseDataModel>
+vector<DataItemType> FileDataAdapter<DataItemType>::getlist()
+{
+	return list;
+}
+
 #endif

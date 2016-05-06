@@ -12,6 +12,14 @@ public:
 	explicit Movie(const string&);
 	void Parse() override;
 	~Movie();
+	char getPriceUnitSymbol();
+	string getDVD_Title();
+	MovieStatus getStatus();
+	double getPrice();
+	FourDigitDatePart getYear();
+	string getGenre();
+	Date getDVD_ReleaseDate();
+	int getID();
 
 private:
 	char PriceUnitSymbol;
