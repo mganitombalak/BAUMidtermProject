@@ -15,6 +15,11 @@ void Utility::Split(const std::string& splittingText, char delimeter, std::vecto
 	}
 }
 
+void Utility::PrintGridHeaders(std::string[])
+{
+
+}
+
 Utility::Utility()
 {
 	MovieStatusParser["Out"] = MovieStatus::Out;

@@ -35,6 +35,22 @@ void Movie::Parse()
 	}
 }
 
+string Movie::getTitle() const
+{
+	return string(this->DVD_Title);
+}
+
+int Movie::getID() const
+{
+	return this->ID;
+
+}
+
+void Movie::Print() const
+{
+	cout << "fgdgdfg" << endl;
+}
+
 Movie::~Movie()
 {
 }

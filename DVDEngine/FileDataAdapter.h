@@ -1,9 +1,8 @@
 #pragma once
-#ifndef FILEDATAADAPTER_H
-#define FILEDATAADAPTER_H
 #include "FileManager.h"
 #include "BaseDataModel.h"
 #include "Movie.h"
+#include <vector>
 
 template<typename  DataItemType=BaseDataModel>
 class FileDataAdapter
@@ -16,6 +15,12 @@ public:
 	explicit FileDataAdapter(void);
 	explicit FileDataAdapter(const FileManager* const);
 	void Execute(bool);
+
+	vector<DataItemType> getResultSet()
+	{
+		return this->list;
+	}
+
 	~FileDataAdapter();
 };
 
@@ -80,5 +85,3 @@ FileDataAdapter<DataItemType>::~FileDataAdapter()
 	if (fileManager == nullptr) return;
 	delete fileManager;
 }
-
-#endif
