@@ -67,10 +67,10 @@ void FileDataAdapter<DataItemType>::Execute(bool showProgress=false)
 		}
 		fileManager->Close();
 		system("cls");
-		cout << "Loading data please wait..." << endl;
-		cout << string(progressOfReading / 70, 254) << endl;
+		cout << "Loading data into memory.Please wait..." << endl;
 		cout << "% 100 record processed." << endl;
-		_sleep(2000);
+		cout << string(progressOfReading / 70, 254) << endl;
+		_sleep(1000);
 	}
 }
 
