@@ -75,7 +75,7 @@ void FileDataAdapter<DataItemType>::Execute(bool showProgress=false)
 		cout << "Loading data into memory.Please wait..." << endl;
 		cout << "% 100 record processed." << endl;
 		cout << string(progressOfReading / 70, 254) << endl;
-		_sleep(1000);
+		_sleep(500);
 	}
 }
 

@@ -7,11 +7,9 @@
 #include "Global.h"
 
 using namespace std;
-
+void(*handler)();
 void ApplicationManager::PrepareMenuTree() const
 {
-	void(*handler)();
-
 #pragma region First Group
 
 	menuList[0] = *(new MenuItem(new string("Search and display a movie"), nullptr, 0,  nullptr));
@@ -152,9 +150,12 @@ MenuItem* ApplicationManager::FindMenu(MenuItem* ParentMenu, int DisplayOrder) c
 	return nullptr;
 }
 
-ApplicationManager::ApplicationManager()
+ApplicationManager::ApplicationManager(const string* filePath)
 {
+	const FileManager* fm = new FileManager(filePath, ios::in);
 	menuList = allocator<MenuItem>().allocate(20);
+	fda = new FileDataAdapter<Movie>(fm);
+	fda->Execute(true);
 }
 
 

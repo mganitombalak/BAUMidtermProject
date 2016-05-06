@@ -10,14 +10,9 @@
 
 int main(int argc, char* args[])
 {
-	appMgr = new ApplicationManager;
-	appMgr->PrepareMenuTree();
 	const string* filePath = new string("D:\\DVD_List.txt");
-	const FileManager* fm = new FileManager(filePath, ios::in);
-	fda = new FileDataAdapter<Movie>(fm);
-	fda->Execute(true);
+	appMgr = new ApplicationManager(filePath);
+	appMgr->PrepareMenuTree();
 	appMgr->ShowAndAskForMainMenu();
-	string s;
-	cin >> s;
 	return 0;
 }
