@@ -2,6 +2,7 @@
 #include <vector>
 #include "ApplicationManager.h"
 #include "Utility.h"
+#include <windows.h>
 
 using namespace std;
 
@@ -38,7 +39,7 @@ void ApplicationManager::PrepareMenuTree() const
 	menuList[11] = *(new MenuItem(new string("Display Statistics"), nullptr, 3));
 	menuList[12] = *(new MenuItem(new string("Display number of each genres"), &menuList[11], 0));
 	menuList[13] = *(new MenuItem(new string("Display average price"), &menuList[11], 1));
-	menuList[14] = *(new MenuItem(new string("Display the number of movies whose price is greater than ..."), &menuList[11], 2));
+	menuList[14] = *(new MenuItem(new string("Display number of movies whose price is greater than"), &menuList[11], 2));
 	menuList[15] = *(new MenuItem(new string("Display average price of \"Discontinued\" movies"), &menuList[11], 3));
 	menuList[16] = *(new MenuItem(new string("Display average price of \"Out\" movies"), &menuList[11], 4));
 	menuList[17] = *(new MenuItem(new string("Display average price of \"Cancelled\" movies"), &menuList[11], 5));
@@ -60,48 +61,62 @@ void ApplicationManager::PrepareMenuTree() const
 void ApplicationManager::ShowAndAskForMainMenu() const
 {
 	system("cls");
+	cout << string(1, 201) << string(60, 205) << string(1, 187) << endl;
+	cout << string(28, 176) << " MENU " << string(28, 176) << endl;
+	cout << string(1, 204) << string(60, 205) << string(1, 185) << endl;
 	for (auto i = 0; i < 20; i++)
 	{
 		if (menuList[i].getParentMenu() != nullptr) continue;
-		menuList[i].Print();
+		cout << string(1, 186) << ends;
+		menuList[i].Print(true);
 	}
+	cout << string(1, 200)<< string(60, 205) << string(1, 188)<<endl;
 	int intSelection;
 	MenuItem* choosen = static_cast<MenuItem*>(nullptr);
 	while (!choosen)
 	{
 		try
 		{
-			cout << "Please enter your choice:" << ends;
+			cout << "Please enter your choice(type 'exit' to exit):"<<ends;
 			string selection;
 			cin >> selection;
-
+			if (selection == "Exit" || selection == "exit")
+				exit(0);
 			intSelection = stoi(selection);
 			choosen = FindMenu(nullptr, intSelection - 1);
 		}
 		catch (...)
 		{
-
+			choosen = nullptr;
 		}
 	}
+	cout << string(1, 200) << string(60, 205) << string(1, 188) << endl;
 	ShowSubMenu(choosen);
 }
 
 void ApplicationManager::ShowSubMenu(MenuItem* ParentMenu) const
 {
 	system("cls");
+	cout << string(1, 201) << string(60, 205) << string(1, 187) << endl;
+	cout << string(26, 176) << " SUB MENU " << string(26, 176) << endl;
+	cout << string(1, 204) << string(60, 205) << string(1, 185) << endl;
 	for (auto i = 0; i < 20; i++)
 	{
 		if (menuList[i].getParentMenu() == nullptr) continue;
 		else if (menuList[i].getParentMenu() == ParentMenu)
-			menuList[i].Print();
+		{
+			cout << string(1, 186) << ends;
+			menuList[i].Print(true);
+		}
 	}
-	cout << "Please enter your choice (type '#' to go back):" << ends;
+	cout << string(1, 200) << string(60, 205) << string(1, 188) << endl;
 	int intSelection;
 	MenuItem* choosen = static_cast<MenuItem*>(nullptr);
 	while (!choosen)
 	{
 		try
 		{
+			cout << "Please enter your choice (type '#' to go back):" << ends;
 			string selection;
 			cin >> selection;
 			if (selection[0] == '#')
@@ -111,7 +126,7 @@ void ApplicationManager::ShowSubMenu(MenuItem* ParentMenu) const
 		}
 		catch (...)
 		{
-
+			choosen = nullptr;
 		}
 	}
 }
@@ -136,3 +151,4 @@ ApplicationManager::~ApplicationManager()
 {
 	delete[] menuList;
 }
+

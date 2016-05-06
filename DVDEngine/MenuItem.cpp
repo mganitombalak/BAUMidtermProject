@@ -3,13 +3,21 @@
 
 using namespace std;
 
-MenuItem::MenuItem():Title(nullptr),DisplayOrder(0),ParentMenu(nullptr)
+MenuItem::MenuItem() :Title(nullptr), DisplayOrder(0), ParentMenu(nullptr)
 {
 }
 
-void MenuItem::Print() const
+void MenuItem::Print(bool addBorder = false) const
 {
-	cout <<"("<< this->DisplayOrder + 1 << ") "<< *(this->Title) << endl;
+	if (addBorder)
+	{
+		int length = 54 - this->Title->length();
+		length = length < 0 ? length*-1 : length;
+		cout << "(" << this->DisplayOrder + 1 << ") " << *(this->Title) << ends;
+		cout << string(length, 32) << string(1, 186) << endl;;
+	}
+	else
+		cout << "(" << this->DisplayOrder + 1 << ") " << *(this->Title) << endl;
 }
 
 MenuItem* MenuItem::getParentMenu() const
@@ -22,7 +30,7 @@ int MenuItem::getDisplayOrder() const
 	return DisplayOrder;
 }
 
-MenuItem::MenuItem(string* menuTitle, MenuItem* parentMenu,int displayOrder)
+MenuItem::MenuItem(string* menuTitle, MenuItem* parentMenu, int displayOrder)
 {
 	Title = menuTitle;
 	DisplayOrder = displayOrder;

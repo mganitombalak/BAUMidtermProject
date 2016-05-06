@@ -13,7 +13,7 @@ int main(int argc, char* args[])
 	const string* filePath=new string("D:\\DVD_List.txt");
 	const FileManager* fm =new FileManager(filePath,ios::in);
 	auto f = new FileDataAdapter<Movie>(fm);
-	f->Execute(true);
+	//f->Execute(true);
 	ap.ShowAndAskForMainMenu();
 	string s;
 	cin >> s;

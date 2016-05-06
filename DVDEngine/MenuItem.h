@@ -14,7 +14,7 @@ public:
 	~MenuItem();
 
 
-	void Print(void) const;
+	void Print(bool) const;
 	MenuItem* getParentMenu(void)const;
 	int getDisplayOrder(void)const;
 };
