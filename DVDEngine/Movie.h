@@ -8,7 +8,6 @@ using namespace std;
 class Movie:public BaseDataModel
 {
 public:
-	Movie();
 	Movie(string,MovieStatus,double,FourDigitDatePart,string, Date);
 	explicit Movie(const string&);
 	void Parse() override;

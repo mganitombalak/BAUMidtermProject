@@ -1,20 +1,21 @@
-#pragma once
 #include <string>
+
+using namespace std;
 
 class MenuItem
 {
-	MenuItem* ParentMenu;
 	std::string* Title;
 	int DisplayOrder;
+	MenuItem* ParentMenu;
 public:
 	
-	explicit MenuItem(std::string*,int);
-	MenuItem();
-	MenuItem(std::string*,MenuItem*,int);
+	MenuItem(void);
+	explicit MenuItem(std::string*,MenuItem*,int);
 	~MenuItem();
 
 
-	void Print() const;
-	MenuItem* getParentMenu()const;
+	void Print(void) const;
+	MenuItem* getParentMenu(void)const;
+	int getDisplayOrder(void)const;
 };
 

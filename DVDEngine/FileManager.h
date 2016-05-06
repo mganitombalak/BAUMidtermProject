@@ -7,9 +7,9 @@ class FileManager
 std::fstream* fileStream;
 public:
 	FileManager(const std::string* const fileName, std::ios::open_mode);
-	bool IsOpen() const;
-	void Close() const;
-	std::fstream* getFileStream() const;
+	bool IsOpen(void) const;
+	void Close(void) const;
+	std::fstream* getFileStream(void) const;
 	~FileManager();
 };
 

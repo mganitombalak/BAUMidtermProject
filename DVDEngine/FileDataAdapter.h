@@ -14,7 +14,7 @@ vector<DataItemType> list;
 public:
 	explicit FileDataAdapter(void);
 	explicit FileDataAdapter(const FileManager* const);
-	void Execute(void);
+	void Execute(bool);
 	~FileDataAdapter();
 };
 
@@ -29,7 +29,7 @@ FileDataAdapter<DataItemType>::FileDataAdapter(const FileManager* const releated
 }
 
 template <typename DataItemType = BaseDataModel>
-void FileDataAdapter<DataItemType>::Execute()
+void FileDataAdapter<DataItemType>::Execute(bool showProgress=false)
 {
 	if(this->fileManager->IsOpen())
 	{
@@ -39,11 +39,14 @@ void FileDataAdapter<DataItemType>::Execute()
 			++progressOfReading;
 			try
 			{
-				system("cls");
-				cout << "Loading data please wait..." << endl;
-				cout << progressOfReading << " record processed." << endl;
-				cout << string(progressOfReading/250, 254) << endl;
-				_sleep(20);
+				if (showProgress)
+				{
+					system("cls");
+					cout << "Loading data please wait..." << endl;
+					cout << progressOfReading << " record processed." << endl;
+					cout << string(progressOfReading/250, 254) << endl;
+					_sleep(20);
+				}
 
 			DataItemType* f =new DataItemType(nextLine);
 			f->Parse();

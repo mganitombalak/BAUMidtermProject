@@ -6,10 +6,11 @@ class ApplicationManager
 private:
 	MenuItem* menuList;
 public:
-	void ShowMainMenu() const;
-	void PrepareMenuTree();
+	void ShowAndAskForMainMenu(void) const;
+	void PrepareMenuTree(void) const;
+	MenuItem* FindMenu(MenuItem*,int) const;
 	void ShowSubMenu(MenuItem* ParentMenu) const;
-	ApplicationManager();
+	ApplicationManager(void);
 	~ApplicationManager();
 };
 
