@@ -15,6 +15,14 @@ public:
 	int getID() const;
 	void Print() const;
 	~Movie();
+	char getPriceUnitSymbol();
+	string getDVD_Title();
+	MovieStatus getStatus();
+	double getPrice();
+	FourDigitDatePart getYear();
+	string getGenre();
+	Date getDVD_ReleaseDate();
+	int getID();
 
 private:
 	char PriceUnitSymbol;
