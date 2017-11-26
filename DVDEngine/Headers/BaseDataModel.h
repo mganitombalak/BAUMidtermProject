@@ -10,4 +10,6 @@ public:
 	explicit BaseDataModel(const std::string& RawData);
 	virtual void Parse() = 0;
 	virtual ~BaseDataModel();
+
+	BaseDataModel();
 };

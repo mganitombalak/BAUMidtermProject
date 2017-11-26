@@ -1,0 +1,3 @@
+/Users/mehmetganitombalak/Github/CSVFileParser/DVDEngine/cmake-build-release/CMakeFiles/rebuild_cache.dir
+/Users/mehmetganitombalak/Github/CSVFileParser/DVDEngine/cmake-build-release/CMakeFiles/edit_cache.dir
+/Users/mehmetganitombalak/Github/CSVFileParser/DVDEngine/cmake-build-release/CMakeFiles/DVDEngine.dir

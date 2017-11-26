@@ -1,10 +1,6 @@
 #include <iostream>
-#include <vector>
-#include "ApplicationManager.h"
-#include "Utility.h"
-#include <windows.h>
-#include "Movie.h"
-#include "Global.h"
+#include "Headers/ApplicationManager.h"
+#include "Headers/Global.h"
 
 using namespace std;
 void(*handler)();
@@ -62,8 +58,9 @@ void ApplicationManager::PrepareMenuTree() const
 
 void ApplicationManager::ShowAndAskForMainMenu() const
 {
-	system("cls");
-	cout << string(1, 201) << string(60, 205) << string(1, 187) << endl;
+    system("clear");
+    setlocale( LC_ALL, "en_US.UTF-8" );
+	cout << string(1,201) << string(60, 205) << string(1, 187) << endl;
 	cout << string(2, 32) << string(26, 176) << " MENU " << string(26, 176) << string(1, 32) << endl;
 	cout << string(1, 204) << string(60, 205) << string(1, 185) << endl;
 	for (auto i = 0; i < 20; i++)
@@ -72,7 +69,7 @@ void ApplicationManager::ShowAndAskForMainMenu() const
 		cout << string(1, 186) << ends;
 		menuList[i].Print(true);
 	}
-	cout << string(1, 200) << string(60, 205) << string(1, 188) << endl;
+	cout << string(1,201) << string(60, 205) << string(1, 188) << endl;
 	int intSelection;
 	MenuItem* choosen = static_cast<MenuItem*>(nullptr);
 	while (!choosen)
@@ -101,7 +98,7 @@ void ApplicationManager::ShowAndAskForMainMenu() const
 
 void ApplicationManager::ShowSubMenu(MenuItem* ParentMenu) const
 {
-	system("cls");
+    system("clear");
 	cout << string(1, 201) << string(60, 205) << string(1, 187) << endl;
 	cout << string(2, 32) << string(24, 176) << " SUB MENU " << string(24, 176) << string(1, 32) << endl;
 	cout << string(1, 204) << string(60, 205) << string(1, 185) << endl;
@@ -155,7 +152,7 @@ ApplicationManager::ApplicationManager(const string* filePath)
 	const FileManager* fm = new FileManager(filePath, ios::in);
 	menuList = allocator<MenuItem>().allocate(20);
 	fda = new FileDataAdapter<Movie>(fm);
-	fda->Execute(true);
+	fda->Execute(false);
 }
 
 

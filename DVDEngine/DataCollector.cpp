@@ -1,4 +1,4 @@
-#include "DataCollector.h"
+#include "Headers/DataCollector.h"
 
 
 
@@ -28,7 +28,7 @@ void DataCollector::filterByTitle()
 		Utility::PrintGridHeaders(headers);
 		for (Movie m : fda->getResultSet())
 		{
-			if (m.getTitle().find(title) != string::npos)
+			if (m.getDVD_Title().find(title) != string::npos)
 			{
 				m.Print();
 			}

@@ -1,5 +1,5 @@
-#include "Date.h"
-#include "Utility.h"
+#include "Headers/Date.h"
+#include "Headers/Utility.h"
 
 Date::Date():_Day(1),_Month(1),_Year(1900)
 {
@@ -18,7 +18,7 @@ Date::Date(const string&  newDate)
 			_Year = stoi(dateParts[2]);
 
 			if (!this->IsValidDate())
-				throw exception("Invalid date");
+				throw 1;
 		}
 	}
 	else if(newDate.find("/") != string::npos)
@@ -32,7 +32,7 @@ Date::Date(const string&  newDate)
 			_Year = stoi(dateParts[2]);
 
 			if (!this->IsValidDate())
-				throw exception("Invalid date");
+				throw 1;
 		}
 	}
 	else if (newDate.find("-") != string::npos)
@@ -46,7 +46,7 @@ Date::Date(const string&  newDate)
 			_Year = stoi(dateParts[2]);
 
 			if (!this->IsValidDate())
-				throw exception("Invalid date");
+				throw 1;
 		}
 	}
 }
@@ -57,7 +57,7 @@ Date::Date(const TwoDigitDatePart* const day, const TwoDigitDatePart* const mont
 	_Month = *month;
 	_Year = *month;
 	if (!this->IsValidDate())
-		throw exception("Invalid date");
+		throw 1;
 }
 
 bool Date::IsValidDate() const

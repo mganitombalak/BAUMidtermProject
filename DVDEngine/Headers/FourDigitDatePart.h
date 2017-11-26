@@ -1,0 +1,1 @@
+﻿typedef __uint16_t FourDigitDatePart;

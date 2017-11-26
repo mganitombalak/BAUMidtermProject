@@ -1,18 +1,17 @@
 ﻿#include  <stdio.h>
-#include "Date.h"
+#include "Headers/Date.h"
 #include <iostream>
-#include "Utility.h"
-#include "FileDataAdapter.h"
-#include "Movie.h"
-#include "ApplicationManager.h"
-#include "Global.h"
-
+#include "Headers/Utility.h"
+#include "Headers/FileDataAdapter.h"
+#include "Headers/Movie.h"
+#include "Headers/ApplicationManager.h"
+#include "Headers/Global.h"
 
 int main(int argc, char* args[])
 {
-	const string* filePath = new string("D:\\DVD_List.txt");
-	appMgr = new ApplicationManager(filePath);
-	appMgr->PrepareMenuTree();
-	appMgr->ShowAndAskForMainMenu();
+    const string* filePath = new string("/Users/mehmetganitombalak/Downloads/DVD_list.txt");
+    ApplicationManagerHandler = new ApplicationManager(filePath);
+    ApplicationManagerHandler->PrepareMenuTree();
+    ApplicationManagerHandler->ShowAndAskForMainMenu();
 	return 0;
 }
