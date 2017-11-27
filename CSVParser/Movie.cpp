@@ -41,7 +41,7 @@ void Movie::Parse()
 	{
 
 		vector<string> result;
-		Utility::Split(this->rawData, Utility::Delimeter, result);
+		Utility::Split(this->rawData, Utility::Delimiter, result);
 		if (result.capacity() <= 0) return;
 		this->DVD_Title = result[0];
 		this->Status = Utility().MovieStatusParser[result[1]];

@@ -1,5 +1,4 @@
 ﻿
-#include "Headers/Date.h"
 #include "Headers/ApplicationManager.h"
 #include "Headers/Global.h"
 

@@ -14,7 +14,7 @@ void MenuItem::Print(bool addBorder = false) const
 		int length = 54 - this->Title->length();
 		length = length < 0 ? length*-1 : length;
 		cout << "(" << this->DisplayOrder + 1 << ") " << *(this->Title) << ends;
-		cout << string(length, 32) << string(1, 186) << endl;;
+		cout << string(length, 32) << string(1, 124) << endl;;
 	}
 	else
 		cout << "(" << this->DisplayOrder + 1 << ") " << *(this->Title) << endl;

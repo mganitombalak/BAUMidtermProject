@@ -1,17 +1,19 @@
+#include <iostream>
 #include "Headers/Utility.h"
 
+using namespace std;
 
-void Utility::Split(const std::string& splittingText, char delimeter, std::vector<std::string>& splitedText)
+void Utility::Split(const std::string& splittingText, char delimiter, std::vector<std::string>& splittedText)
 {
 	std::string::size_type i = 0;
-	std::string::size_type j = splittingText.find(delimeter);
+	std::string::size_type j = splittingText.find(delimiter);
 	while (j != std::string::npos) {
-		splitedText.push_back(splittingText.substr(i, j - i));
+		splittedText.push_back(splittingText.substr(i, j - i));
 		i = ++j;
-		j = splittingText.find(delimeter, j);
+		j = splittingText.find(delimiter, j);
 
 		if (j == std::string::npos)
-			splitedText.push_back(splittingText.substr(i, splittingText.length()));
+			splittedText.push_back(splittingText.substr(i, splittingText.length()));
 	}
 }
 
@@ -29,3 +31,17 @@ Utility::Utility()
 
 
 Utility::~Utility() {}
+
+void Utility::SetCursorPosition(int, int) {
+
+}
+
+void Utility::PrintMenuHeader(std::string title) {
+	PrintOneLineBorder();
+	cout << string(1, 124) << string(28, 32) << title << string(28, 32) << string(1, 124) << endl;
+	PrintOneLineBorder();
+}
+
+void Utility::PrintOneLineBorder() {
+    cout << string(1,91) << string(60, 61) << string(1, 93) << endl;
+}

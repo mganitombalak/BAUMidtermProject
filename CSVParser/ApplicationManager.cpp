@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Headers/ApplicationManager.h"
 #include "Headers/Global.h"
+#include "Headers/Utility.h"
 
 using namespace std;
 void(*handler)();
@@ -60,16 +61,16 @@ void ApplicationManager::ShowAndAskForMainMenu() const
 {
     system("clear");
     setlocale( LC_ALL, "en_US.UTF-8" );
-	cout << string(1,201) << string(60, 205) << string(1, 187) << endl;
-	cout << string(2, 32) << string(26, 176) << " MENU " << string(26, 176) << string(1, 32) << endl;
-	cout << string(1, 204) << string(60, 205) << string(1, 185) << endl;
+
+	Utility::PrintMenuHeader("Menu");
+
 	for (auto i = 0; i < 20; i++)
 	{
 		if (menuList[i].getParentMenu() != nullptr) continue;
-		cout << string(1, 186) << ends;
+		cout << string(1, 124) << ends;
 		menuList[i].Print(true);
 	}
-	cout << string(1,201) << string(60, 205) << string(1, 188) << endl;
+    Utility::PrintOneLineBorder();
 	int intSelection;
 	MenuItem* choosen = static_cast<MenuItem*>(nullptr);
 	while (!choosen)
